@@ -1,0 +1,133 @@
+
+
+
+
+
+
+-----------------------------------
+The parent process (overseer) is responsible for:
+
+starting and stopping children processes (workers)
+restarting them in case of problems
+keeping the configured number of children alive
+
+-------------------------------------------
+
+Process creation - In general purpose systems some way is needed to 
+create processes as needed during operation.  There are four 
+principle events led to process creation 
+
+System Initalization 
+Execuation of process creation system calls by a running process
+A user request to create a new process
+Initialization of a batch job 
+
+A process may create a new process by some create process such as 'Fork'
+Parent proess creates children process which in turn create other processes 
+forming a tree of processes but no process can be created itself.  Parent process 
+creates child process for resource sharing as 
+
+1)Parent and children share all resources
+2) Children share subset of parents resources
+3) Parent and child share no resources 
+
+Process exit states - terminates execuation by making an exit system call 
+
+Normal exit - terminate after job done 
+Fatal Error - when process discovers fatal error 
+Error Error - Cause a bug in program illigal instruction dividing by zero
+Killed by another process - A proccess exectes a system call telling OS to
+terminate another process 
+
+exit status of process is passed from child process to parent when exection 
+of specific task delegated is return to kernal 
+
+Parent may terminate execution of children process (abort) because
+1) Child has excceded allocated resources
+2) Task assigned to child is no longer required
+3) If parent is exiting.  Some OS do not allow child to continue if its parent 
+terminates 
+
+Some OS allow terminating process to provide specific exit status to system 
+made available to parent 
+
+
+
+-----
+The System.Diagnostics.Process class
+An instance of the System.Diagnostics.Process class references a process. The processes which
+can be referenced are:
+•	 The current process in which the instance is used.
+•	 A process on the same machine other than the current process.
+•	 A process on a remote machine.
+The methods and fields of this class allow the creation or destruction of a process, and allow you
+to obtain information on a process. Here, we will discuss a few of the common tasks done using
+this class.
+Creating and destroying a child process
+The program below creates a new process called child process. In this case, the initial process is
+called parent process. This child process executes the notepad application. The thread of the parent
+process waits for one second before destroying this child process. This program thus has the effect
+of opening and closing notepad:
+Example 5-1
+using System.Diagnostics;
+using System.Threading;
+class Program {
+ static void Main() {
+ // Create a child process which executes the ‘notepad.exe’
+ // application on the text file ‘hello.txt’.
+ Process process = Process.Start(“notepad.exe”, “hello.txt”);
+ // Sleep one second.
+ Thread.Sleep(1000);
+ // Destroy the child process.
+ process.Kill();
+ }
+}
+The Start() static method can use the existing Windows file extension associations. For example,
+the program would have the same behavior if we wrote:
+ Process process = Process.Start(“hello.txt”);
+By default, a child process inherits the security context of its parent process. However, one overloaded
+version of the Process.Start() method allows you to launch the child process in the
+security context of any user assuming that you can provide the login/password pair for the user in
+an instance of the System.Diagnostics.ProcessStartInfo class.
+Processes 111
+Avoid running several simultaneous instances of the same application on
+a single machine
+This functionality is required by several applications. In fact, it is common that is makes no sense
+in simultaneously running several instances of an application on a same machine.
+Until now, to satisfy this constraint under Windows, developers most often use the named mutex
+technique described at page 127. The use of this technique to satisfy this constraint does suffer from
+the following drawbacks:
+•	 There is the small, but potential, risk that the name of the mutex be used by another application,
+in which case this technique will not work and will create hard to detect bugs.
+•	 This technique does not resolve the general case where we only authorize N instances of the
+application.
+Thanks to the static methods named GetCurrentProcess() (which returns the current
+process) and GetProcesses() (which returns all the processes on the machine) of the System.
+Diagnostics.Process class, this problem finds an elegant and easy to implement solution using
+the following program:
+Example 5-2
+using System.Diagnostics;
+class Program {
+ static void Main() {
+ if ( TestIfAlreadyRunning() ) {
+ System.Console.WriteLine(“This app is already running!”);
+ }
+ else{
+ // Here, the entry point of the application.
+ }
+ }
+ static bool TestIfAlreadyRunning() {
+ Process processCurrent = Process.GetCurrentProcess();
+ Process[] processes = Process.GetProcesses();
+ foreach ( Process process in processes )
+ if ( processCurrent.Id != process.Id )
+ if ( processCurrent.ProcessName == process.ProcessName )
+ return true;
+ return false;
+ }
+}
+The GetProcesses() method can also return all the processes on a remote machine by indicating
+the name of the machine as a parameter to the method
+
+
+-------------
