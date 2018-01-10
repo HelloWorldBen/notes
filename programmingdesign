@@ -1,0 +1,48 @@
+McCabe Metrics
+The following is a sampling of some of the McCabe metrics that can be collected by number of automated metrics tools.
+
+Cyclomatic Complexity 
+ Cyclomatic complexity is a measure of the complexity of a module’s decision structure.  It is calculated 
+Based on the number of linearly independent paths that also equates to number of paths that should be tested.  
+Low quality and error-prone software often display a high Cyclomatic complexity 
+
+Essential Complexity 
+Essential complexity is a measure of number of unstructured constructs contained in the module.  
+Unstructured constructs tend to decrease code quality and make it more difficult to modularize code. 
+With unstructured constructs, making changes in one part of code often causes errors to appear in 
+other parts which may depend on the changed code
+
+Module Design Complexity 
+Module Design complexity measures a module’s decision structure as it relates to other modules.   
+This quantifies how much effort will be required to integrate and test the module with subordinate modules. 
+A high module design complexity leads to high degree of control coupling between modules, making it difficult
+to isolate, maintain, and reuse individual software components
+
+Design Complexity 
+Design Complexity measures the interaction between modules in a program.  This metric provides
+a summary of the module design complexity and thus a good estimate of the overall integration testing
+effort that will be required by the program.  A high design complexity implies complex interactions 
+between modules, which leads to difficult-to-maintain program.
+
+Number of lines Complexity
+Number of lines-  most basic coding metrics.  Developer can produce huge number of code but of poor 
+quality and otherwise score poorly against any metric.    The number of lines when used in conjunction
+with other metrics does contribute to understanding of program.  Generally speaking, smaller modules
+(with fewer lines) will be easier to understand and maintain
+
+Normalized Complexity 
+Normalized Complexity simply a module’s cyclometric divided by the number of lines of code in module.  
+The division factors the size factor of cyclometric measure and identifies modules with unusually 
+dense design login.  A module with dense design logic will require more effort to maintain than modules 
+with less dense logic 
+
+Global Data Complexity
+Global Data Complexity measures the complexity of global and parameter data in module.  
+Global data can be accessed by multiple modules in the program.  The use of global data introduces data
+coupling to the module that can lead to maintenance problems. 
+
+
+Pathological Complexity
+Pathological Complexity measures the degree to which a module contains extremely unstructured objects.
+This revels questionable coding practices such as jumping into middle of loops.   
+Control structures such as these represent the greatest risk and should be redesigned
