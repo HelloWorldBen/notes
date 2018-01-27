@@ -1,0 +1,15 @@
+Errors
+Its possible to program the robots wrong - depends on severity -degree of problem 
+correct error cannot happen again same thing cannot be said of human beings
+Security - Putting clear text credentials into scripts
+server logs need to be encrypted - business user might share info 
+credentials etc
+System overload - Robots generate more volume than humans - 24 /7 work
+robot can generate downstream alot of data 
+Redundancy - Once humans who used to know the manual process are gone, who can 
+help in case of robot failure - mitigate execellent documentation around process robot
+developers can use that as resource when things go wrong
+RPA lock in
+beware of proprietary RPA tools locked in depend on their tools - onboard custom tools 
+to have freedom 
+ 
