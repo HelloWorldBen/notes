@@ -1,15 +1,48 @@
+
 Errors
 Its possible to program the robots wrong - depends on severity -degree of problem 
 correct error cannot happen again same thing cannot be said of human beings
 Security - Putting clear text credentials into scripts
-server logs need to be encrypted - business user might share info 
-credentials etc
+server logs need to be encrypted credentials etc - business user might share info 
+IT is used to secuity more knowlege and experience compared to business user 
 System overload - Robots generate more volume than humans - 24 /7 work
-robot can generate downstream alot of data 
+robot can generate downstream alot of data cascading failure in other systems 
 Redundancy - Once humans who used to know the manual process are gone, who can 
 help in case of robot failure - mitigate execellent documentation around process robot
 developers can use that as resource when things go wrong
-RPA lock in
+RPA vendor lock in
 beware of proprietary RPA tools locked in depend on their tools - onboard custom tools 
-to have freedom 
+to have freedom to create new POC programs 
+Compliance - certain work being done  by humans work need to always be examed by human 
+supervisior - govt regulartory roles  - might be not for RPA 
  
+
+Value of automation - RPA - Business strategy 
+Evangelize benefits and maximize popular support among users
+Must set & manage expectations as what the software robots can accomplish 
+Drive user adoption and acceptance of technology-based change initiaties
+Hard numbers things need to be shown what has been improved from RPA
+ - in line with your org needs and expectations 
+
+ROI - for each dept RPA measured - Successful business should not dependent on labor reduction
+ROI criteria - more than just money what business leaders in each dept see ROI criteria value other than money  
+ROI criteria - understand business users needs what is important to them 
+quality of work - no error rate 
+speed - speed of work done
+Agility - ability to pivot market pressure human worker focus on other things
+Insight -understand business better - machine intelligence 
+Retention - monotonous work will not happy employee will leave
+Compliance - data needs be onshore cannot be off shored 
+higher throughput (increase revenue) 
+
+
+Choose and configure demand management tool (Jira, Rally, Botstatz) 
+http://www.botstatz.com/#getstarted
+
+People Plan - commuincate daily/ weekly - manage expectations - 
+business rule exceptions will occur
+application wont respond as expected 
+
+RPA is a tool not the tool 
+one part of wider technology strategy 
+
